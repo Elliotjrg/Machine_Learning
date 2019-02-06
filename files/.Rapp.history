@@ -1,0 +1,46 @@
+source("/Users/Elliot/Dropbox/Uni/2017s1/COMP9417/Ass2/files/SVMClassificationModel.R")
+library(quantmod)
+library(PerformanceAnalytics)
+getSymbols(‘AAPL’, from=’2015-01-01’)
+getSymbols('AAPL', from='2015-01-01')
+returns = dailyReturns(HLC(AAPL), type='log')
+returns = dailyReturn(HLC(AAPL), type='log')
+d <- featurGen(AAPL, returns)
+d <- featureGen(AAPL, returns)
+d <- featureGen(AAPL, returns)
+d <- featureGen(AAPL, returns)
+d = featureGen(AAPL, returns)
+d = featureGen(AAPL, returns)
+source("/Users/Elliot/Desktop/SVMClassificationModel.R")
+d = featureGen(AAPL, returns)
+data = featureGen(AAPL, returns)
+featureGen
+SVM
+source("/Users/Elliot/Dropbox/Uni/2017s1/COMP9417/Ass2/files/SVMClassificationModel.R")
+data = featureGen(AAPL, returns)
+targets <- coredata(returns)
+targets[targets>=0] = 1
+targets[targets<0] = -1
+targets <- as.factor(targets)
+SVM(d[30:nrow(d),], targets[30:length(targets)], returns, lookback=252, ktype = ‘C-svc’, cross valid = 10, C = 60)
+SVM(d[30:nrow(d),], targets[30:length(targets)], returns, lookback=252, ktype = 'C-svc', cross valid = 10, C = 60)
+SVM(data[30:nrow(data),], targets[30:length(targets)], returns, lookback=252, ktype = 'C-svc', cross valid = 10, C = 60)
+SVM(data[30:nrow(data),], targets[30:length(targets)], returns, lookback=252, ktype='C-svc', cross valid = 10, C=60)
+SVM(data[30:nrow(data),], targets[30:length(targets)], returns, lookback = 252, ktype = "C-svc", crossvalid = 10, C = 60)
+d = featureGen(TSLA, returns)
+getSymbols('TSLA', from='2015-01-01')
+returns = dailyReturn(HLC(TSLA), type='log')
+data <- featureGen(TSLA, returns)
+targets <- coredata(returns)
+targets[targets>=0] = 1
+targets[targets<0] = -1
+targets <- as.factor(targets)
+SVM(data[30:nrow(data),], targets[30:length(targets)], returns, lookback = 252, ktype = "C-svc", crossvalid = 10, C = 60)
+getSymbols('AMZN', from='2015-01-01')
+returns = dailyReturn(HLC(AMZN), type='log')
+data <- featureGen(AMZN, returns)
+targets <- coredata(returns)
+targets[targets>=0] = 1
+targets[targets<0] = -1
+targets <- as.factor(targets)
+SVM(data[30:nrow(data),], targets[30:length(targets)], returns, lookback = 252, ktype = "C-svc", crossvalid = 10, C = 60)

@@ -1,0 +1,49 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Consolas;\f2\fnil\fcharset0 HelveticaNeue;
+\f3\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red119\green119\blue119;\red253\green255\blue137;
+\red22\green100\blue172;\red38\green38\blue38;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c54118\c54118\c54118;\cssrgb\c99216\c100000\c60392;
+\cssrgb\c9020\c47451\c72941;\cssrgb\c20000\c20000\c20000;\cssrgb\c100000\c100000\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 How to use SVMClassificationModel.R\
+\
+\
+library(quantmod)\
+library(PerformanceAnalytics)\
+\
+#Set SVMClassificationModel.R as source\
+source(\'93SVMClassificationModel.R\'94)\
+\
+#load data\
+getSymbols('TSLA', from='2015-01-01')\
+\
+#Calculate daily returns\
+returns = dailyReturn(HLC(TSLA), type='log')\
+\
+#Generate targets and Data frame\
+data <- featureGen(AAPL, returns)\
+targets <- coredata(returns)\
+targets[targets>=0] = 1\
+targets[targets<0] = -1\
+targets <- as.factor(targets)\
+\
+\
+#Run\
+\
+\pard\pardeftab720\sl300\sa200\partightenfactor0
+
+\f1\fs26\fsmilli13200 \cf2 \expnd0\expndtw0\kerning0
+SVM(data[30:nrow(data),], targets[30:length(targets)], returns, lookback = 252, ktype = "C-svc", crossvalid = 10, C = 60)\
+\
+\
+REFERENCE - Code adapted from Quantum Financier, implementation of RSI\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\fs32 \cf3 \cb4 \outl0\strokewidth0 \strokec3 Quantum Financier. 2017. 
+\i Support Vector Machine RSI System | Quantum Financier
+\i0 . [ONLINE] Available at: {\field{\*\fldinst{HYPERLINK "https://quantumfinancier.wordpress.com/2010/06/26/support-vector-machine-rsi-system/"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://quantumfinancier.wordpress.com/}} 
+\f3\fs26 \cf6 \cb7 \outl0\strokewidth0 \
+}
